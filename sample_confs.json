@@ -1,0 +1,35 @@
+{
+  "user": {
+    "id": "id_here",
+    "username": "username",
+    "password": "password"
+  },
+  "mail": {
+    "host": "mail.example.com",
+    "port": 25,
+    "user": "user",
+    "password": "password",
+    "to": {
+      "mail": "dest@example.com",
+      "name": "name"
+    }
+  },
+  "classes": {
+    "2": {
+      "c": "3B",
+      "t": ["12:00", "13:00"]
+    },
+    "3": {
+      "c": "FIT MOVES",
+      "t": ["12:00", "13:00"]
+    },
+    "5": {
+      "c": "3B",
+      "t": ["12:00", "13:00"]
+    },
+    "6": {
+      "c": "BODYPUMP",
+      "t": ["12:00", "13:00"]
+    }
+  }
+}
