@@ -26,7 +26,6 @@ class FindClass():
         end_time = date.strptime(class_time_interval[1], '%H:%M')
         for c in classes[class_name]:
           now = date.now()
-          #now = date.strptime('22/02/2020 10:00', '%d/%m/%Y %H:%M')
           testing_now = date.strptime(now.strftime('%H:%M'), '%H:%M')
           testing_time = date.strptime(c['t'], '%H:%M')
           if (testing_time - testing_now).total_seconds() < 9 * 3600 and testing_now < testing_time and start_time < testing_time and end_time > testing_time:
@@ -34,7 +33,6 @@ class FindClass():
 
   def retrieve_class(self):
     today = date.now().date()
-    #today = date.strptime('22/02/2020', '%d/%m/%Y').date()
     rnd = random.randint(100000000000, 199999999999)
 
     with sqlite3.connect(self.db_name) as conn:
