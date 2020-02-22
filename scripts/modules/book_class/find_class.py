@@ -22,11 +22,10 @@ class FindClass():
       class_time_interval = confs[weekday]['t']
       
       if class_name in classes:
-        start_time = date.strptime(class_time_interval[0], '%H:%M')
-        end_time = date.strptime(class_time_interval[1], '%H:%M')
-        
         now = date.now()
         testing_now = date.strptime(now.strftime('%H:%M'), '%H:%M')
+        start_time = date.strptime(class_time_interval[0], '%H:%M')
+        end_time = date.strptime(class_time_interval[1], '%H:%M')
         for c in classes[class_name]:
           testing_time = date.strptime(c['t'], '%H:%M')
           if (testing_time - testing_now).total_seconds() < 9 * 3600 and testing_now < testing_time and start_time < testing_time and end_time > testing_time:
