@@ -43,7 +43,6 @@ class BookClass():
       row = c.fetchone()
       if row[0] == 1:
         return False
-
-      return True
     
     self.login_and_book(class_id)
+    return True
