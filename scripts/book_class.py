@@ -32,7 +32,5 @@ if class_to_book is not None:
   ok = bc.book_class(class_to_book)
   if ok:
     send_success_mail(JSON_DATA['mail'], class_to_book)
-  else:
-    log('Error booking class %s' % class_to_book)
 else:
   log('No classes to book')

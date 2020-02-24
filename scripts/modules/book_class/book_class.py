@@ -33,8 +33,10 @@ class BookClass():
         with sqlite3.connect(self.db_name) as conn:
           c = conn.cursor()
           c.execute('INSERT INTO booked_classes VALUES (?)', (class_id,))
+          return True
       else:
         self.log('Error booking class %s' % class_id)
+        return False
 
   def book_class(self, class_id):
     with sqlite3.connect(self.db_name) as conn:
@@ -42,7 +44,7 @@ class BookClass():
       c.execute('SELECT COUNT(1) FROM booked_classes WHERE id=?', (class_id,))
       row = c.fetchone()
       if row[0] == 1:
+        self.log('Class %s already booked' % class_id)
         return False
     
-    self.login_and_book(class_id)
-    return True
+    return self.login_and_book(class_id)
