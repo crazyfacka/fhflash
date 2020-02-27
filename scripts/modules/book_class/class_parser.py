@@ -31,7 +31,7 @@ class ClassParser(HTMLParser):
       elif self.hit == 1:
         if data not in self.classes:
           self.classes[data] = []
-        self.classes[data].append({'t': self.cur_time, 'id': self.cur_class})
+        self.classes[data].append({'t': self.cur_time, 'id': self.cur_class[4:]})
 
       self.hit += 1
       self.hit %= 2
