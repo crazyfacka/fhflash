@@ -31,7 +31,6 @@ if class_to_book is not None:
   bc = BookClass(log, DB_NAME, JSON_DATA['user'])
   ok = bc.book_class(class_to_book)
   if ok:
-    log('Send mail')
-    # send_success_mail(JSON_DATA['mail'], class_to_book)
+    send_success_mail(JSON_DATA['mail'], class_to_book)
 else:
   log('No classes to book')
