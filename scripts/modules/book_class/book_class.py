@@ -22,7 +22,7 @@ class BookClass():
 
       s.get('https://www.myhut.pt/myhut/aulas/')
 
-      resp = s.post('https://www.myhut.pt/myhut/functions/myhut.php', {
+      s.post('https://www.myhut.pt/myhut/functions/myhut.php', {
         'aula': class_id,
         'socio': self.user['id'],
         'robot': 'asbcdefghijklmnopqrstuvwxz',
