@@ -10,6 +10,7 @@ class BookClass():
     self.user = user
 
   def login_and_book(self, class_id):
+    user_id = str(self.user['id'])
     self.log('Preparing to book class with ID %s' % class_id)
     with requests.Session() as s:
       s.get('https://www.myhut.pt/')
@@ -22,13 +23,15 @@ class BookClass():
       s.get('https://www.myhut.pt/myhut/aulas/')
 
       resp = s.post('https://www.myhut.pt/myhut/functions/myhut.php', {
-        'aula': class_id,
+        'aula': class_id, #TODO got aula1183665, must remove the prefix "aula"
         'socio': self.user['id'],
         'robot': 'asbcdefghijklmnopqrstuvwxz',
         'op': 'book-aulas'
       })
 
-      if resp.ok:
+      confirmation_resp = s.get('https://www.myhut.pt/myhut/functions/get-aulas-info.php')
+      result = re.search("(" + str(class_id) + "," + user_id + ")", confirmation_resp.text)
+      if result.start() != -1:
         self.log('Class %s booked' % class_id)
         with sqlite3.connect(self.db_name) as conn:
           c = conn.cursor()
