@@ -24,6 +24,7 @@ class BookClass():
 
       resp = s.post('https://www.myhut.pt/myhut/functions/myhut.php', {
         'aula': class_to_book['id'],
+
         'socio': self.user['id'],
         'robot': 'asbcdefghijklmnopqrstuvwxz',
         'op': 'book-aulas'
@@ -49,5 +50,5 @@ class BookClass():
       if row[0] == 1:
         self.log('Class %s already booked' % class_to_book['id'])
         return False
-    
+
     return self.login_and_book(class_to_book)
