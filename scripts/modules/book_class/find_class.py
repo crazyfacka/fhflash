@@ -29,7 +29,8 @@ class FindClass():
         for c in classes[class_name]:
           testing_time = date.strptime(c['t'], '%H:%M')
           if (testing_time - testing_now).total_seconds() < 9 * 3600 and testing_now < testing_time and start_time < testing_time and end_time > testing_time:
-            return c['id']
+            c['class_name'] = class_name
+            return c
 
   def retrieve_class(self):
     today = date.now().date()
