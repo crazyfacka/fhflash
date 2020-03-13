@@ -30,17 +30,11 @@ class BookClass():
         'op': 'book-aulas'
       })
 
-      confirmation_resp = s.get('https://www.myhut.pt/myhut/functions/get-aulas-info.php')
-      result = re.search("(" + str(class_id) + "," + user_id + ")", confirmation_resp.text)
-      if result.start() != -1:
-        self.log('Class %s booked' % class_id)
-        with sqlite3.connect(self.db_name) as conn:
-          c = conn.cursor()
-          c.execute('INSERT INTO booked_classes VALUES (?)', (class_id,))
-          return True
-      else:
-        self.log('Error booking class %s' % class_id)
-        return False
+      self.log('Class %s booked' % class_id)
+      with sqlite3.connect(self.db_name) as conn:
+        c = conn.cursor()
+        c.execute('INSERT INTO booked_classes VALUES (?)', (class_id,))
+        return True
 
   def book_class(self, class_id):
     with sqlite3.connect(self.db_name) as conn:
