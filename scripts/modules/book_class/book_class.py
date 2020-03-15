@@ -1,4 +1,3 @@
-import re
 import requests
 import sqlite3
 
@@ -11,7 +10,6 @@ class BookClass():
     self.user = user
 
   def login_and_book(self, class_id):
-    user_id = str(self.user['id'])
     self.log('Preparing to book class with ID %s' % class_id)
     with requests.Session() as s:
       s.get('https://www.myhut.pt/')
